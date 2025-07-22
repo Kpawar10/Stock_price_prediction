@@ -6,7 +6,7 @@ This project uses historical stock data to predict whether the stock price will 
 - Real data from Yahoo Finance (`yfinance`)
 - Feature engineering (SMA, price changes)
 - K-Nearest Neighbors with Grid Search
-- Model evaluation & accuracy
+- Model evaluation & accuracy.
 
 ## Installation
 ```bash

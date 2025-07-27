@@ -12,7 +12,7 @@ This project attempts to answer that using supervised learning and feature engin
 ---
 
 ## 🔍 Features Used
-
+ 
 - `Open-Close`: Difference between opening and closing prices
 - `High-Low`: Daily trading range
 - `SMA_5`, `SMA_10`: Simple Moving Averages over 5 and 10 days

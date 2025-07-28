@@ -30,11 +30,11 @@ end_date = st.date_input("End Date", value=datetime.date.today())
 
 # Load data
 if st.button("Load and Predict"):
-    df = yf.download(stock, start=start_date, end=end_date)
-  
+    df = yf.download(stock, start=start_date, end=end_date) 
+   
+    
+    st.write("Downloaded Data Columns:", df.columns)
 # Safety checks after downloading stock data
-st.write("Downloaded Columns:", df.columns)
-
 if df.empty:
     st.error("No data found for the selected stock or date range.")
     st.stop()
@@ -43,24 +43,12 @@ if 'Close' not in df.columns:
     st.error("Error: 'Close' column is missing. Please check the stock ticker.")
     st.stop()
 
-# Ensure no extra spaces in column names
-df.columns = df.columns.str.strip()
-
-# Proceed only if 'Close' exists after cleaning
-if 'Close' not in df.columns:
-    st.error("Cleaned DataFrame still missing 'Close' column.")
-    st.stop()
-
-# Drop rows where Close is NaN
-if df['Close'].isnull().all():
-    st.error("All values in 'Close' column are NaN.")
-    st.stop()
-
 df.dropna(subset=['Close'], inplace=True)
 
 if df['Close'].empty:
     st.error("No valid 'Close' price data after cleaning. Try a different date range or stock.")
     st.stop()
+
 
     st.subheader("Raw Data")
     st.write(df.tail())
